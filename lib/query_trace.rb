@@ -2,6 +2,10 @@ module QueryTrace
   mattr_accessor :depth
   self.depth = 20
   
+  def self.enabled?
+    defined?(@@trace_queries) && @@trace_queries
+  end
+     
   def self.enable!
     ::ActiveRecord::ConnectionAdapters::AbstractAdapter.send(:include, QueryTrace) unless defined?(@@trace_queries)
     @@trace_queries = true
@@ -9,6 +13,13 @@ module QueryTrace
   
   def self.disable!
     @@trace_queries = false
+  end
+
+  # Toggles query tracing on and off and returns a boolean indicating the new
+  # state of query tracing (true for enabled, false for disabled).
+  def self.toggle!
+    enabled? ? disable! : enable!
+    enabled?
   end
   
   def self.append_features(klass)
