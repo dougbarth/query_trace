@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.description = %q{With query_trace enabled, the Rails logs will contain a partial stack trace for every executed SQL statement, making it easier to find where they are generated in your code.}
   s.email = %q{nathaniel@terralien.com}
   s.extra_rdoc_files = ["README", "MIT-LICENSE"]
-  s.files = ["MIT-LICENSE", "README", "Rakefile", "lib/query_trace.rb"]
+  s.files = ["MIT-LICENSE", "README", "Rakefile", "lib/query_trace.rb", "rails/init.rb"]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/ffmike/query_trace/tree/master}
   s.require_paths = ["lib"]
